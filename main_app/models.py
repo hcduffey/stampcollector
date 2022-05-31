@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Stamp(models.Model):
+    name = models.CharField(
+        max_length=100
+    )
+
     country = models.CharField(
         max_length=100
     )
@@ -27,5 +31,11 @@ class Stamp(models.Model):
     )
 
     year = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
    
     

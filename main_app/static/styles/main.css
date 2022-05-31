@@ -1,0 +1,12 @@
+.stamp-container {
+    width: fit-content;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.stamp-container > * {
+    margin: 0 5px;
+}
