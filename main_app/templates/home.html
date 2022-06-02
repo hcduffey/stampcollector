@@ -13,6 +13,9 @@
             <a href="{% url 'collection_detail' collection.pk %}">{{collection.name}}</a>
             (<a href="{% url 'collection_delete' collection.pk %}">&#128465;</a>)
         </li>
+    
+    {% empty %}
+        <h3>Login to create your stamp collections!</h3>
     {% endfor %}
     </ol>
 

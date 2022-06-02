@@ -25,13 +25,25 @@
     <div class="columns">
         <div class="column is-one-fifth">
             <aside class="menu">
-                <p class="menu-label">
-                  Menu
+                    {% if user.is_authenticated %}
+                        Welcome: {{user.username}}
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a class="navbar-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    {% else %}
+                        Menu
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a class="navbar-item" href="{% url 'login' %}">Log In</a></li>
+                            <li><a class="navbar-item" href="{% url 'signup' %}">Sign Up</a></li>
+                        </ul>
+                    {% endif %}
                 </p>
-                <ul class="menu-list">
-                  <li><a href="{% url 'home' %}">Home</a></li>
-                  <li><a href="{% url 'about' %}">About</a></li>
-                </ul>
                 <p class="menu-label">
                   Collections
                 </p>
