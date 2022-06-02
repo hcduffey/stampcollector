@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+
+{% block title %}{{stamp.name}} Details{% endblock %}
+
+
+{% block content %}
+<div class="detail__name">   
+    <h1 class="title">{{stamp.name}}</h1>
+    <a href="{% url 'stamp_update' stamp.collection.pk stamp.pk %}">Update Stamp</a> |
+    <a href="{% url 'stamp_delete' stamp.collection.pk stamp.pk %}">Delete Stamp</a>
+</div>
+<div class="detail__img">
+    <img src="{{stamp.image}}" alt="{{stamp.name}}" />
+</div>
+<div class="detail__container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Price</th>
+            <th>Condition</th>
+            <th>Centering</th>
+            <th>Format</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{stamp.country}}</td>
+            <td>{{stamp.cost}}</td>
+            <td>{{stamp.condition}}</td>
+            <td>{{stamp.centering}}</td>
+            <td>{{stamp.format}}</td>
+            <td>{{stamp.year}}</td>
+           </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

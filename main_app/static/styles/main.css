@@ -10,3 +10,7 @@
 .stamp-container > * {
     margin: 0 5px;
 }
+
+img {
+    margin: 1px;
+}

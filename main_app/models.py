@@ -2,10 +2,20 @@ from django.db import models
 
 # Create your models here.
 
+class Collection(models.Model):
+    name = models.CharField(
+        max_length=100
+    )
+
+    def __str__(self):
+        return self.name
+
 class Stamp(models.Model):
     name = models.CharField(
         max_length=100
     )
+
+    cost = models.IntegerField(default=1)
 
     country = models.CharField(
         max_length=100
@@ -32,10 +42,35 @@ class Stamp(models.Model):
 
     year = models.IntegerField()
 
+    collection = models.ForeignKey(Collection, on_delete=models.CASCADE, related_name="stamps")
+
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['name']
    
-    
+
+class Price(models.Model):
+    source = models.CharField(
+        max_length=100
+    )
+
+    stamps = models.ManyToManyField(Stamp)
+
+    def __str__(self):
+        return self.source
+
+class Store(models.Model):
+    name = models.CharField(
+        max_length=100
+    )
+
+    url = models.CharField(
+        max_length=100
+    )
+
+    stamps = models.ManyToManyField(Stamp)
+
+    def __str__(self):
+        return self.name

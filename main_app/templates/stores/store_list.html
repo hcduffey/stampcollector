@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Store Listing{% endblock %}
+
+{% block content %}
+    <h1>Stamp Stores</h1>
+
+    <ol>
+    {% for store in stores %}
+        <li>
+            <a href="{% url 'store_detail' store.pk %}">{{store.name}}</a>
+            (<a href="{% url 'store_delete' store.pk %}">&#128465;</a>)
+        </li>
+    {% endfor %}
+    </ol>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{store.name}}{% endblock %}
+
+{% block content %}
+<h1 class="title">{{store.name}} <a href="{% url 'store_update' store.pk %}">&#9998;</a></h1>
+
+<div class="columns">
+    <div class="column">
+        <h2>Stamps for Sale</h2>
+
+        <ol>
+            {% for stamp in store.stamps.all %}
+
+                <li>{{stamp.name}} - ${{stamp.cost}}</li>
+
+            {% empty %}
+            <h2>No stamps in our inventory!</h2>
+
+            {% endfor %}
+        </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}

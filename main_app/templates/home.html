@@ -4,4 +4,16 @@
 
 {% block content %}
     <h1>Welcome to Stamp Collector!</h1>
+
+    <h2>Stamp Collections</h2>
+
+    <ol>
+    {% for collection in collections %}
+        <li>
+            <a href="{% url 'collection_detail' collection.pk %}">{{collection.name}}</a>
+            (<a href="{% url 'collection_delete' collection.pk %}">&#128465;</a>)
+        </li>
+    {% endfor %}
+    </ol>
+
 {% endblock %}

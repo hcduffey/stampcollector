@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}{{collection.name}}{% endblock %}
+
+{% block content %}
+<h1 class="title">{{collection.name}} <a href="{% url 'collection_update' collection.pk %}">&#9998;</a></h1>
+
+<div class="columns">
+    <div class="column">
+        <form class="mb-5" action="{% url 'stamp_create' collection.pk %}" method="POST">
+            {% csrf_token %}
+            <legend>New Stamp</legend>
+            <div class="field has-addons">
+                <div class="control">
+                    <input 
+                        class="input"
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="field has-addons">
+                <div class="control">
+                    <input 
+                        class="input"
+                        type="number"
+                        name="cost"
+                        placeholder="Price"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="field has-addons">
+                <div class="control">
+                    <input 
+                        class="input"
+                        type="url"
+                        name="image"
+                        placeholder="Image"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="field has-addons">
+                <div class="control">
+                    <input 
+                        class="input"
+                        type="text"
+                        name="country"
+                        placeholder="Country"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="field has-addons">
+                <div class="control">
+                    <input 
+                        class="input"
+                        type="text"
+                        name="condition"
+                        placeholder="Condition"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="field has-addons">
+                <div class="control">
+                    <input 
+                        class="input"
+                        type="text"
+                        name="centering"
+                        placeholder="Centering"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="field has-addons">
+                <div class="control">
+                    <input 
+                        class="input"
+                        type="text"
+                        name="format"
+                        placeholder="Format"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="field has-addons">
+                <div class="control">
+                    <input 
+                        class="input"
+                        type="text"
+                        name="year"
+                        placeholder="Year"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="control">
+                <input class="button is-primary" type="Submit" value="Add Stamp" />
+            </div>
+        </form>
+    </div>
+    <div class="column">
+        <h2>Collected Stamps</h2>
+
+        <ol>
+            {% for stamp in collection.stamps.all %}
+
+            <li><a href="{% url 'stamp_detail' collection.pk stamp.pk %}">{{stamp.name}}</a></li>
+
+
+            {% empty %}
+            <h2>No stamps added to collection yet!</h2>
+
+            {% endfor %}
+        </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -11,7 +11,49 @@
     <title>Stamp Collector - {% block title %}{% endblock %}</title>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <section class="hero is-primary">
+        <div class="hero-body">
+          <p class="title">
+            Stamp Collector
+          </p>
+          <p class="subtitle">
+            For all your stamp collecting needs...
+          </p>
+        </div>
+    </section>
+
+    <div class="columns">
+        <div class="column is-one-fifth">
+            <aside class="menu">
+                <p class="menu-label">
+                  Menu
+                </p>
+                <ul class="menu-list">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                </ul>
+                <p class="menu-label">
+                  Collections
+                </p>
+                <ul class="menu-list">
+                  <li><a href="{% url 'collection_list' %}">Collection List</a></li>
+                  <li><a href="{% url 'collection_create' %}">Create New Collection</a></li>
+                </ul>
+                <p class="menu-label">
+                  Stores
+                </p>
+                <ul class="menu-list">
+                    <li><a href="{% url 'store_list' %}">Store List</a></li>
+                    <li><a href="{% url 'store_create' %}">Create Store</a></li>
+                </ul>
+            </aside>
+        </div>
+        <div class="column">
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

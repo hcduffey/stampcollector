@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'stampsproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'stampdb',
+        'NAME': 'stampsdb',
     }
 }
 
